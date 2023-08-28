@@ -1,4 +1,6 @@
 import 'package:e_commerce_ui/widgets/header_section.dart';
+import 'package:e_commerce_ui/widgets/product_list_section.dart';
+import 'package:e_commerce_ui/widgets/story_view_section.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,7 +18,10 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             SizedBox(height: 65,),
-            HeaderSection()
+            HeaderSection(),
+            StoryViewSection(),
+            SizedBox(height: 15,),
+            ProductListSection(title: 'Categories')
           ],
         ),
       ),
