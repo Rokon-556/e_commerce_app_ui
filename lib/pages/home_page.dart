@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
-import 'widgets/main_product_body.dart';
+import '../widgets/main_product_body.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
