@@ -1,3 +1,4 @@
+import 'package:e_commerce_ui/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:story_view/story_view.dart';
 
@@ -24,12 +25,12 @@ class _StoryViewPageState extends State<StoryViewPage> {
                   url: widget.images[i],
                   controller: storyController,
                   imageFit: BoxFit.contain,
-                  caption: const Text(
+                  caption:  Text(
                     'Caption Here',
                     style: TextStyle(
                         color: Colors.white,
                         backgroundColor: Colors.black,
-                        fontSize: 17),
+                        fontSize: Dimension.font15 + 2),
                   ),
                 )
             ],
@@ -44,12 +45,12 @@ class _StoryViewPageState extends State<StoryViewPage> {
             onTap: () {
               Navigator.pop(context);
             },
-            child: const Align(
+            child:  Align(
               alignment: Alignment.topRight,
               child: Icon(
                 Icons.cancel,
                 color: Colors.red,
-                size: 40,
+                size: Dimension.icon20 * 2,
               ),
             ),
           )

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_ui/utils/dimension.dart';
 import 'package:e_commerce_ui/widgets/header_section.dart';
 import 'package:e_commerce_ui/widgets/product_list_section.dart';
 import 'package:e_commerce_ui/widgets/story_view_section.dart';
@@ -33,14 +34,13 @@ class _MainProductBodyState extends State<MainProductBody> {
     pageController.dispose();
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(
-            height: 65,
+          SizedBox(
+            height: Dimension.height30 * 2,
           ),
           const HeaderSection(),
           Expanded(
@@ -48,23 +48,26 @@ class _MainProductBodyState extends State<MainProductBody> {
               child: Column(
                 children: [
                   const StoryViewSection(),
-                  const SizedBox(
-                    height: 15,
+                  SizedBox(
+                    height: Dimension.height15,
                   ),
                   ProductListSection(
                     title: 'Categories',
                     categoryWidget: category(),
                     isOff: true,
                   ),
-                  const SizedBox(
-                    height: 15,
+                  SizedBox(
+                    height: Dimension.height15,
                   ),
-                  const ProductListSection(title: 'Hot Item',isOff: false,),
-                  const SizedBox(
-                    height: 25,
+                  const ProductListSection(
+                    title: 'Hot Item',
+                    isOff: false,
                   ),
                   SizedBox(
-                    height: 200,
+                    height: Dimension.height30,
+                  ),
+                  SizedBox(
+                    height: Dimension.sliderListHeight,
                     child: PageView.builder(
                         controller: pageController,
                         itemCount: 4,
@@ -72,19 +75,22 @@ class _MainProductBodyState extends State<MainProductBody> {
                           return sliderList(index);
                         }),
                   ),
-                  const SizedBox(
-                    height: 25,
+                  SizedBox(
+                    height: Dimension.height25,
                   ),
-                  const ProductListSection(title: 'New Arrivals',isOff: false,),
-                  const SizedBox(height: 15,),
+                  const ProductListSection(
+                    title: 'New Arrivals',
+                    isOff: false,
+                  ),
+                  SizedBox(
+                    height: Dimension.height15,
+                  ),
                 ],
               ),
             ),
           ),
-
         ],
       ),
-
     );
   }
 
@@ -97,7 +103,7 @@ class _MainProductBodyState extends State<MainProductBody> {
       'Groceries'
     ];
     return SizedBox(
-      height: 110,
+      height: Dimension.categoryWidgetHeight,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categoryName.length,
@@ -107,8 +113,8 @@ class _MainProductBodyState extends State<MainProductBody> {
             child: Column(
               children: [
                 CachedNetworkImage(
-                  height: 80,
-                  width: 130,
+                  height: Dimension.categoryWidgetHeight - 30,
+                  width: Dimension.categoryWidgetWidth,
                   fit: BoxFit.fitWidth,
                   imageUrl:
                       'https://shinjukuhalalfood.com/wp-content/uploads/2023/07/Daawat-Everyday-FB-Reel.png',
@@ -119,10 +125,14 @@ class _MainProductBodyState extends State<MainProductBody> {
                   ),
                   errorWidget: (context, url, error) => const Icon(Icons.error),
                 ),
-                const SizedBox(
-                  height: 10,
+                 SizedBox(
+                  height: Dimension.height10,
                 ),
-                Text(categoryName[index],style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),maxLines: 2,),
+                Text(
+                  categoryName[index],
+                  style: TextStyle(fontSize: Dimension.font14, fontWeight: FontWeight.w600),
+                  maxLines: 2,
+                ),
               ],
             ),
           );
@@ -159,7 +169,7 @@ class _MainProductBodyState extends State<MainProductBody> {
     return Transform(
       transform: matrix,
       child: Container(
-        height: 150,
+        height: Dimension.height30 * 5,
         margin: const EdgeInsets.only(left: 5, right: 5),
         decoration: BoxDecoration(
           color: index.isEven ? Colors.redAccent : Colors.amberAccent,

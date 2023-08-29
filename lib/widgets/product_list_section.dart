@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:e_commerce_ui/utils/dimension.dart';
 import 'package:flutter/material.dart';
 
 import '../utils/app_colors.dart';
@@ -19,24 +20,26 @@ class ProductListSection extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
+          padding: EdgeInsets.symmetric(horizontal: Dimension.width20),
           child: Row(
             children: [
               Text(
                 title,
-                style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold, fontSize: Dimension.font15),
               ),
               const Spacer(),
-              const Row(
+              Row(
                 children: [
                   Text(
                     'See all',
-                    style: TextStyle(color: AppColors.smallTextColor, fontSize: 14),
+                    style: TextStyle(
+                        color: AppColors.smallTextColor,
+                        fontSize: Dimension.font14),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 10,
+                    size: Dimension.icon10,
                     color: Colors.grey,
                   )
                 ],
@@ -44,17 +47,17 @@ class ProductListSection extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: Dimension.height10,
         ),
         categoryWidget ?? Container(),
-        const SizedBox(
-          height: 10,
+        SizedBox(
+          height: Dimension.height10,
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 20.0),
+          padding: EdgeInsets.only(left: Dimension.width20),
           child: SizedBox(
-            height: 180,
+            height: Dimension.height30 * 6,
             child: ListView.builder(
                 shrinkWrap: true,
                 scrollDirection: Axis.horizontal,
@@ -70,11 +73,11 @@ class ProductListSection extends StatelessWidget {
 
   Widget singleProduct(String imgUrl) {
     return Container(
-      width: 120,
-      margin: const EdgeInsets.only(right: 8),
+      width: Dimension.width30 * 4,
+      margin: EdgeInsets.only(right: Dimension.width10 - 2),
       decoration: BoxDecoration(
           color: const Color.fromARGB(207, 225, 223, 223),
-          borderRadius: BorderRadius.circular(5)),
+          borderRadius: BorderRadius.circular(Dimension.radius12 / 2.4)),
       child: Column(
         children: [
           Padding(
@@ -82,8 +85,8 @@ class ProductListSection extends StatelessWidget {
             child: Stack(
               children: [
                 CachedNetworkImage(
-                  height: 95,
-                  width: 110,
+                  height: Dimension.height30 * 3.1,
+                  width: Dimension.width30 * 4 - 10,
                   fit: BoxFit.cover,
                   imageUrl: imgUrl,
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
@@ -99,14 +102,15 @@ class ProductListSection extends StatelessWidget {
                   child: Container(
                     decoration: BoxDecoration(
                         color: AppColors.percentContainerColor,
-                        borderRadius: BorderRadius.circular(5)),
+                        borderRadius:
+                            BorderRadius.circular(Dimension.radius12 / 2.4)),
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: isOff
-                          ? const Text(
+                          ? Text(
                               '11%',
                               style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: Dimension.font14 - 2,
                                   fontWeight: FontWeight.w700,
                                   color: AppColors.mainColor),
                             )
@@ -114,62 +118,63 @@ class ProductListSection extends StatelessWidget {
                     ),
                   ),
                 ),
-                const Positioned(
+                Positioned(
                   right: 3,
                   top: 3,
                   child: Icon(
                     Icons.favorite_border,
                     color: Colors.grey,
+                    size: Dimension.icon20,
                   ),
                 )
               ],
             ),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 5),
+            padding: EdgeInsets.only(left: Dimension.width5),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   'Current Chinese Boil',
                   overflow: TextOverflow.ellipsis,
                   maxLines: 2,
                   style: TextStyle(
-                      color: Color(0xff181725),
+                      color: const Color(0xff181725),
                       letterSpacing: 1.2,
-                      fontSize: 13,
+                      fontSize: Dimension.font14 - 1,
                       fontWeight: FontWeight.w500),
                 ),
-                const SizedBox(height: 4),
-                const Text(
+                SizedBox(height: Dimension.height5 - 1),
+                Text(
                   '200gm',
                   style: TextStyle(
                       color: AppColors.smallTextColor,
                       fontWeight: FontWeight.w400,
-                      fontSize: 12),
+                      fontSize: Dimension.font14 - 2),
                 ),
-                const SizedBox(height: 6),
+                SizedBox(height: Dimension.height5 + 1),
                 Row(
                   children: [
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Text(
+                        Text(
                           '¥250',
                           style: TextStyle(
                               color: AppColors.mainColor,
-                              fontSize: 14,
+                              fontSize: Dimension.font14,
                               fontWeight: FontWeight.w700),
                         ),
-                        const SizedBox(
-                          width: 5,
+                        SizedBox(
+                          width: Dimension.width5,
                         ),
                         isOff
-                            ? const Text(
+                            ? Text(
                                 '¥280',
                                 style: TextStyle(
                                     color: AppColors.smallTextColor,
-                                    fontSize: 12,
+                                    fontSize: Dimension.font14 - 2,
                                     decoration: TextDecoration.lineThrough),
                               )
                             : Container()
@@ -180,9 +185,10 @@ class ProductListSection extends StatelessWidget {
                       decoration: const BoxDecoration(
                         color: AppColors.mainColor,
                       ),
-                      child: const Icon(
+                      child: Icon(
                         Icons.add,
                         color: Colors.white,
+                        size: Dimension.height20 + 5,
                       ),
                     )
                   ],

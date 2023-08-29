@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:e_commerce_ui/pages/story_view_page.dart';
+import 'package:e_commerce_ui/utils/dimension.dart';
 import 'package:flutter/material.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/widgets/story_view.dart';
@@ -12,9 +13,9 @@ class StoryViewSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: Dimension.height30 * 5,
       child: Padding(
-        padding: const EdgeInsets.only(left: 20),
+        padding:  EdgeInsets.only(left: Dimension.width20),
         child: ListView.builder(
             scrollDirection: Axis.horizontal,
             shrinkWrap: true,
@@ -28,9 +29,9 @@ class StoryViewSection extends StatelessWidget {
                   // }));
                 },
                 child: Container(
-                  margin: const EdgeInsets.only(right: 5, top: 10),
+                  margin: EdgeInsets.only(right: Dimension.width5, top: Dimension.height10),
                   child: CachedNetworkImage(
-                    width: 95,
+                    width: Dimension.width30 * 3.2,
                     fit: BoxFit.fill,
                     imageUrl: Images.stories[index],
                     progressIndicatorBuilder:
@@ -65,13 +66,13 @@ class StoryViewSection extends StatelessWidget {
                       url: images[i],
                       controller: storyController,
                       imageFit: BoxFit.contain,
-                      caption: const Text(
-                        'Caption Here',
-                        style: TextStyle(
-                            color: Colors.white,
-                            backgroundColor: Colors.black,
-                            fontSize: 17),
-                      ),
+                      // caption:  Text(
+                      //   'Caption Here',
+                      //   style: TextStyle(
+                      //       color: Colors.white,
+                      //       backgroundColor: Colors.black,
+                      //       fontSize: Dimension.font15),
+                      // ),
                     ),
                 ],
                 controller: storyController,

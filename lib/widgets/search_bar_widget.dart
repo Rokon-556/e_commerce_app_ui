@@ -1,3 +1,4 @@
+import 'package:e_commerce_ui/utils/dimension.dart';
 import 'package:flutter/material.dart';
 
 class SearchBarWidget extends StatelessWidget {
@@ -13,11 +14,11 @@ class SearchBarWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 250,
-      height: 40,
+      width: Dimension.searchBoxWidth,
+      height: Dimension.height30 + 10,
       decoration: BoxDecoration(
         color: const Color.fromARGB(207, 225, 223, 223),
-        borderRadius: BorderRadius.circular(12)
+        borderRadius: BorderRadius.circular(Dimension.radius12)
       ),
       child: TextField(
         decoration: InputDecoration(

@@ -1,7 +1,11 @@
+import 'dart:developer';
+
 import 'package:e_commerce_ui/pages/home_page.dart';
+import 'package:e_commerce_ui/utils/dimension.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  log('${Dimension.deviceWidth}');
   runApp(const MyApp());
 }
 
