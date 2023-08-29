@@ -1,7 +1,8 @@
-import 'package:e_commerce_ui/widgets/header_section.dart';
-import 'package:e_commerce_ui/widgets/product_list_section.dart';
-import 'package:e_commerce_ui/widgets/story_view_section.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+
+import 'widgets/main_product_body.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,20 +12,85 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  int _selectedIndex = 0;
+
+  late PersistentTabController _controller;
+
+  List<Widget> _buildScreens() {
+    return [
+      const MainProductBody(),
+      const Center(
+        child: Text('Categories'),
+      ),
+      const Center(
+        child: Text('Profile'),
+      ),
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Image.asset('assets/images/home.png'),
+        title: ("Home"),
+        activeColorPrimary: const Color(0xff37AD57),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Image.asset('assets/images/category.png'),
+        title: ("Archive"),
+        activeColorPrimary: const Color(0xff37AD57),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Image.asset('assets/images/profile.png'),
+        title: ("Cart"),
+        activeColorPrimary: const Color(0xff37AD57),
+        inactiveColorPrimary: CupertinoColors.systemGrey,
+      ),
+    ];
+  }
+  void onTapNav(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = PersistentTabController(initialIndex: 0);
+  }
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 65,),
-            HeaderSection(),
-            StoryViewSection(),
-            SizedBox(height: 15,),
-            ProductListSection(title: 'Categories')
-          ],
-        ),
+    return PersistentTabView(
+      context,
+      controller: _controller,
+      screens: _buildScreens(),
+      items: _navBarsItems(),
+      confineInSafeArea: true,
+      backgroundColor: Colors.white, // Default is Colors.white.
+      handleAndroidBackButtonPress: true, // Default is true.
+      resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+      stateManagement: true, // Default is true.
+      hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+      decoration: NavBarDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        colorBehindNavBar: Colors.white,
       ),
+      popAllScreensOnTapOfSelectedTab: true,
+      popActionScreens: PopActionScreensType.all,
+      itemAnimationProperties: const ItemAnimationProperties( // Navigation Bar's items animation properties.
+        duration: Duration(milliseconds: 200),
+        curve: Curves.ease,
+      ),
+      screenTransitionAnimation: const ScreenTransitionAnimation( // Screen transition animation on change of selected tab.
+        animateTabTransition: true,
+        curve: Curves.ease,
+        duration: Duration(milliseconds: 200),
+      ),
+      navBarStyle: NavBarStyle.style3, // Choose the nav bar style with this property.
     );
   }
 }

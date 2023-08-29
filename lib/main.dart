@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'E-Commerce',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        iconTheme: IconThemeData(
+        iconTheme: const IconThemeData(
           color: Color(0xFF37AD57),
           size: 20
         )

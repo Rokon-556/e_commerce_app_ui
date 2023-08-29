@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 class ProductListSection extends StatelessWidget {
   final String title;
   final bool? isOff;
-  const ProductListSection({super.key, required this.title, this.isOff});
+  final Widget? categoryWidget;
+  const ProductListSection({super.key, required this.title, this.isOff,this.categoryWidget});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +35,10 @@ class ProductListSection extends StatelessWidget {
             ],
           ),
         ),
+        const SizedBox(
+          height: 10,
+        ),
+        categoryWidget ?? Container(),
         const SizedBox(
           height: 10,
         ),
