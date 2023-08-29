@@ -54,13 +54,14 @@ class _MainProductBodyState extends State<MainProductBody> {
                   ProductListSection(
                     title: 'Categories',
                     categoryWidget: category(),
+                    isOff: true,
                   ),
                   const SizedBox(
                     height: 15,
                   ),
-                  const ProductListSection(title: 'Hot Item'),
+                  const ProductListSection(title: 'Hot Item',isOff: false,),
                   const SizedBox(
-                    height: 15,
+                    height: 25,
                   ),
                   SizedBox(
                     height: 200,
@@ -72,9 +73,9 @@ class _MainProductBodyState extends State<MainProductBody> {
                         }),
                   ),
                   const SizedBox(
-                    height: 15,
+                    height: 25,
                   ),
-                  const ProductListSection(title: 'New Arrivals'),
+                  const ProductListSection(title: 'New Arrivals',isOff: false,),
                   const SizedBox(height: 15,),
                 ],
               ),
@@ -96,7 +97,7 @@ class _MainProductBodyState extends State<MainProductBody> {
       'Groceries'
     ];
     return SizedBox(
-      height: 100,
+      height: 110,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: categoryName.length,
@@ -106,9 +107,9 @@ class _MainProductBodyState extends State<MainProductBody> {
             child: Column(
               children: [
                 CachedNetworkImage(
-                  height: 70,
-                  width: 40,
-                  fit: BoxFit.contain,
+                  height: 80,
+                  width: 130,
+                  fit: BoxFit.fitWidth,
                   imageUrl:
                       'https://shinjukuhalalfood.com/wp-content/uploads/2023/07/Daawat-Everyday-FB-Reel.png',
                   progressIndicatorBuilder: (context, url, downloadProgress) =>
@@ -121,7 +122,7 @@ class _MainProductBodyState extends State<MainProductBody> {
                 const SizedBox(
                   height: 10,
                 ),
-                Text(categoryName[index]),
+                Text(categoryName[index],style: TextStyle(fontSize: 14,fontWeight: FontWeight.w600),maxLines: 2,),
               ],
             ),
           );

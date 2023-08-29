@@ -14,12 +14,12 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'E-Commerce',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        iconTheme: const IconThemeData(
-          color: Color(0xFF37AD57),
-          size: 20
-        )
-      ),
+      // theme: ThemeData(
+      //   iconTheme: const IconThemeData(
+      //     color: Color(0xFF37AD57),
+      //     size: 20
+      //   )
+      // ),
       home: const HomePage(),
     );
   }
